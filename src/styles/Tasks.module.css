@@ -8,7 +8,7 @@
 .item {
   border-radius: 15px;
   padding: 1rem;
-  width: 100%;
+  flex: 0 0 50%;
   background-color: #f2f1fb;
 }
 

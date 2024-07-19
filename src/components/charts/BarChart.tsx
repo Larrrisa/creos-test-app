@@ -9,11 +9,10 @@ import {
   Legend,
 } from "chart.js";
 import { Bar } from "react-chartjs-2";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { filterTasksByWeek } from "../../utils/filterTasks";
 import style from "../../styles/BarChart.module.css";
 import { useTranslation } from "react-i18next";
-import { Tasks } from "../../types/types";
 
 function BarChart({ tasks }: any) {
   Chart.register(

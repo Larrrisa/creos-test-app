@@ -1,20 +1,19 @@
-import { useEffect, createContext, useState } from "react";
+import { createContext, useState, ReactNode } from "react";
 
-const ThemeContext = createContext();
+interface ThemeContextType {
+  theme: string;
+  setTheme: React.Dispatch<React.SetStateAction<string>>;
+  toggleTheme: () => void;
+}
 
-const getTheme = () => {
-  const theme = localStorage.getItem("theme");
+const ThemeContext = createContext<ThemeContextType>(undefined as never);
 
-  if (!theme) {
-    localStorage.setItem("theme", "dark-theme");
-    return "dark-theme";
-  } else {
-    return theme;
-  }
-};
+interface ThemeProviderProps {
+  children: ReactNode;
+}
 
-const ThemeProvider = ({ children }: any) => {
-  const [theme, setTheme] = useState(getTheme);
+const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
+  const [theme, setTheme] = useState<string>("");
 
   function toggleTheme() {
     if (theme === "dark-theme") {
@@ -23,14 +22,6 @@ const ThemeProvider = ({ children }: any) => {
       setTheme("dark-theme");
     }
   }
-
-  useEffect(() => {
-    const refreshTheme = () => {
-      localStorage.setItem("theme", theme);
-    };
-
-    refreshTheme();
-  }, [theme]);
 
   return (
     <ThemeContext.Provider

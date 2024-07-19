@@ -18,20 +18,11 @@
   align-items: center;
 }
 
-.language-switcher {
+.language_switcher {
   cursor: pointer;
-  font-size: 18px;
-  color: #333;
-}
-
-.dark-theme .header {
-  background-color: #333;
-  color: #fff;
-}
-
-.dark-theme .theme-switcher,
-.dark-theme .language-switcher {
-  color: #fff;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
 }
 
 @media (max-width: 600px) {

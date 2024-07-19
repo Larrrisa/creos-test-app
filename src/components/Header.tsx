@@ -1,18 +1,21 @@
 import style from "../styles/Header.module.css";
 import { getWeekNumber } from "../utils/filterTasks";
 import { ThemeContext } from "../utils/Theme";
-import { useContext } from "react";
-import "@theme-toggles/react/css/Simple.css";
-import { Simple } from "@theme-toggles/react";
+import { useContext, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 function Header() {
   const { theme, toggleTheme } = useContext(ThemeContext);
   const { t, i18n } = useTranslation();
+  const [currentTheme, setCurrentTheme] = useState(theme);
 
   const toggleLanguage = (lng: string) => {
     i18n.changeLanguage(lng);
   };
+
+  useEffect(() => {
+    setCurrentTheme(theme);
+  }, [theme]);
 
   return (
     <div className={style.header}>
@@ -26,13 +29,20 @@ function Header() {
         <p>
           {t("week")} № {getWeekNumber(new Date())}
         </p>
-        <div className={style.languageSwitcher}>
-          <span onClick={() => toggleLanguage("ru")}>RU</span> /
-          <span onClick={() => toggleLanguage("en")}>EN</span>
+        <div className={style.language_switcher}>
+          <p onClick={() => toggleLanguage("ru")}>RU</p> /
+          <p onClick={() => toggleLanguage("en")}>EN</p>
         </div>
-        <button onClick={() => toggleTheme()}>
-          <Simple />
-        </button>
+        <div
+          onClick={() => {
+            toggleTheme();
+            setCurrentTheme((prevTheme) =>
+              prevTheme === "dark-theme" ? "light-theme" : "dark-theme"
+            );
+          }}
+        >
+          {currentTheme === "dark-theme" ? "☀" : "☾"}
+        </div>
       </div>
     </div>
   );
