@@ -1,30 +1,30 @@
-# React + TypeScript + Vite
+# CRM
+Техническое требование:
+    Сборщик проекта - Vite(React + TypeScript)
+    Redux Toolkit
+    Axios
+    UI - своё решение
+    Визуализация данных на графиках - Chart.js
+    Адаптивный дизайн от 360px
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Функционал:
+    ### Шапка
+        - Переключение локалей(RU, EN) для интерфейса
+        - Переключение тем(светлая, темная)
+        - Выводится текущий номер рабочей недели
 
-Currently, two official plugins are available:
+   ### Главная страница
+        - Отображаются последние 10 комментариев. Выводятся: аватар дизайнера, имя пользователя, относительное время(минут, часов, дней назад), задача, сообщение.
+        - Отображается топ 10 дизайнеров. Отсортированы по меньшему времени и максимальному количеству закрытых задач. Выводятся: медиана затраченного времени на выполнение задачи, количество выполненных задач, аватар дизайнера, имя пользователя.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+   ### Страница задач
+       - График закрытых за месяц задач с распределением по номерам рабочей недели. График состоит из 3 частей: прибыль, расходы и разница между прибылью и расходом. По умолчанию выводится 8 последних рабочих недель. 
+       - Круговая диаграмма с процентным соотношением статусов всех задач (проценты показываются при наведении на диаграмму).
 
-## Expanding the ESLint configuration
+    ### Страница дизайнера
+        - Отображаются все дизайнеры по 16 штук на странцие. Вывеодится: аватар дизайнера, имя дизайнера, почта, количество задач закрытых и в процессе. Сортировка по имени дизайнера, почте. Фильтр по статусам, проектам. Есть пагинация.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+   
 
-- Configure the top-level `parserOptions` property like this:
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
