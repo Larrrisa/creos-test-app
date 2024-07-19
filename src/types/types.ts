@@ -16,10 +16,13 @@ export interface Designers {
   username: string;
   email: string;
   issues: [];
+  issuesCount: number;
+  medianTimeInDays: number;
 }
 
 export interface ApiResponse {
   results: Designers[];
+  next: string;
 }
 
 export interface DesignersState {
@@ -37,4 +40,12 @@ export interface TasksState {
   entities: Tasks[];
   loading: "idle" | "pending" | "succeeded" | "failed";
   error: string | null;
+}
+
+export interface Issue {
+  key: string;
+  date_created: string;
+  status: string;
+  date_started_by_designer: string;
+  date_finished_by_designer: string;
 }

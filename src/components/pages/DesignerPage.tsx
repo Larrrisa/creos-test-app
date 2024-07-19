@@ -7,13 +7,14 @@ import {
 } from "../../utils/filterDesigners";
 import style from "../../styles/Designers.module.css";
 import { useTranslation } from "react-i18next";
+import { Designers } from "../../types/types";
 
 function DesignerPage() {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
   const designers = useAppSelector((state) => state.designers.entities);
   const loading = useAppSelector((state) => state.comments.loading);
-  const [sorted, setSorted] = useState<Designer[]>([]);
+  const [sorted, setSorted] = useState<Designers[]>([]);
   const [selectedStatus, setSelectedStatus] = useState<string>("");
   const [currentPage, setCurrentPage] = useState(1);
   const itemsOnPage = 16;
@@ -42,7 +43,7 @@ function DesignerPage() {
     setSorted(sortedByEmail);
   }
 
-  function handleSelectStatus(event) {
+  function handleSelectStatus(event: any) {
     const selectedStatus = event.target.value;
     setSelectedStatus(selectedStatus);
 
@@ -52,7 +53,7 @@ function DesignerPage() {
     }
     const filtered = designers
       .map((item) => {
-        let filteredTasks = [];
+        let filteredTasks: any = [];
         if (selectedStatus === "Done") {
           filteredTasks = filterFinishedTasks(item.issues);
         } else if (selectedStatus === "In Progress") {

@@ -7,6 +7,7 @@ import getCountedDays from "../../utils/countDays";
 import filterTopDesigners from "../../utils/filterDesigners";
 import style from "../../styles/MainPage.module.css";
 import { useTranslation } from "react-i18next";
+import { Designers, Comments } from "../../types/types";
 
 function MainPage() {
   const { t } = useTranslation();
@@ -14,8 +15,8 @@ function MainPage() {
   const comments = useAppSelector((state) => state.comments.entities);
   const designers = useAppSelector((state) => state.designers.entities);
   const loading = useAppSelector((state) => state.comments.loading);
-  const [filteredComments, setFilteredComments] = useState<Comment[]>([]);
-  const [topDesigners, setTopDesigners] = useState<Designer[]>([]);
+  const [filteredComments, setFilteredComments] = useState<Comments[]>([]);
+  const [topDesigners, setTopDesigners] = useState<Designers[]>([]);
 
   useEffect(() => {
     dispatch(fetchComments());

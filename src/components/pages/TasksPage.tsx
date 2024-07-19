@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { fetchTasks } from "../../redux/slices/TasksSlice";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
-import filterTasksByWeek from "../../utils/filterTasks";
+
 import {
   Chart,
   ArcElement,

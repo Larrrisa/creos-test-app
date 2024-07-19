@@ -1,22 +1,4 @@
-import { useEffect, useState } from "react";
-
-import DesignersSlice, { fetchDesigners } from "../redux/slices/DesignersSlice";
-import { useAppDispatch, useAppSelector } from "../redux/hooks";
-
-interface Issue {
-  key: string;
-  date_created: string;
-  status: string;
-  date_started_by_designer: string;
-  date_finished_by_designer: string;
-}
-
-// interface Designers {
-//   avatar: string;
-//   username: string;
-//   email: string;
-//   issues: [];
-// }
+import { Issue } from "../types/types";
 
 //Фильтрация задач по статусу
 export function filterFinishedTasks(issues: Issue[]): Issue[] {
@@ -36,11 +18,11 @@ function calculateMedian(dates: number[]): number {
     : (dates[mid - 1] + dates[mid]) / 2;
 }
 
-function getMedianTime(designer) {
+function getMedianTime(designer: any) {
   const validIssues = designer.issues.filter(
-    (issue) => issue.date_finished_by_designer
+    (issue: any) => issue.date_finished_by_designer
   );
-  const times = validIssues.map((issue) => {
+  const times = validIssues.map((issue: any) => {
     const start = new Date(issue.date_started_by_designer).getTime();
     const end = new Date(issue.date_finished_by_designer).getTime();
     return end - start;
@@ -49,15 +31,15 @@ function getMedianTime(designer) {
   return medianTime;
 }
 
-export default function filterTopDesigners(designers) {
-  const topD = designers.map((designer) => ({
+export default function filterTopDesigners(designers: any) {
+  const topD = designers.map((designer: any) => ({
     username: designer.username,
     avatar: designer.avatar,
     issuesCount: designer.issues.length,
     medianTime: getMedianTime(designer),
     medianTimeInDays: (getMedianTime(designer) / (1000 * 3600 * 24)).toFixed(2),
   }));
-  topD.sort((a, b) => {
+  topD.sort((a: any, b: any) => {
     if (a.issuesCount !== b.issuesCount) {
       return b.issuesCount - a.issuesCount;
     } else {

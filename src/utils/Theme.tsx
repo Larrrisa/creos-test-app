@@ -1,10 +1,10 @@
-import React, { useEffect, createContext, useState } from "react";
+import { useEffect, createContext, useState } from "react";
 
 const ThemeContext = createContext();
 
 const getTheme = () => {
   const theme = localStorage.getItem("theme");
-  // Default theme is taken as dark-theme
+
   if (!theme) {
     localStorage.setItem("theme", "dark-theme");
     return "dark-theme";
@@ -13,7 +13,7 @@ const getTheme = () => {
   }
 };
 
-const ThemeProvider = ({ children }) => {
+const ThemeProvider = ({ children }: any) => {
   const [theme, setTheme] = useState(getTheme);
 
   function toggleTheme() {

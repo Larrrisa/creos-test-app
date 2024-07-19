@@ -13,8 +13,9 @@ import { useEffect, useState } from "react";
 import { filterTasksByWeek } from "../../utils/filterTasks";
 import style from "../../styles/BarChart.module.css";
 import { useTranslation } from "react-i18next";
+import { Tasks } from "../../types/types";
 
-function BarChart({ tasks }) {
+function BarChart({ tasks }: any) {
   Chart.register(
     ArcElement,
     CategoryScale,
@@ -26,13 +27,8 @@ function BarChart({ tasks }) {
   );
 
   const { t } = useTranslation();
-  const [filteredTasks, setFilteredTasks] = useState<Tasks[]>([]);
   const [week, setWeek] = useState<number>(8);
   const weeksData = filterTasksByWeek(tasks, week);
-
-  useEffect(() => {
-    setFilteredTasks(filterTasksByWeek(tasks, week));
-  }, [tasks]);
 
   const datasets = {
     labels: weeksData.map((data) => `Неделя ${data.week}`),
@@ -79,7 +75,7 @@ function BarChart({ tasks }) {
     },
   };
 
-  const handleInputChange = (event) => {
+  const handleInputChange = (event: any) => {
     const value = event.target.value;
     if (!isNaN(Number(value))) {
       setWeek(Number(value));

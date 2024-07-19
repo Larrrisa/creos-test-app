@@ -9,7 +9,7 @@ const initialState: DesignersState = {
 };
 
 const fetchAllDesigners = async () => {
-  let allDesigners = [];
+  let allDesigners: any = [];
   let nextUrl = "https://sandbox.creos.me/api/v1/designer/";
 
   while (nextUrl) {

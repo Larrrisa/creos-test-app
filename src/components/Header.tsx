@@ -10,7 +10,7 @@ function Header() {
   const { theme, toggleTheme } = useContext(ThemeContext);
   const { t, i18n } = useTranslation();
 
-  const toggleLanguage = (lng) => {
+  const toggleLanguage = (lng: string) => {
     i18n.changeLanguage(lng);
   };
 
@@ -31,7 +31,7 @@ function Header() {
           <span onClick={() => toggleLanguage("en")}>EN</span>
         </div>
         <button onClick={() => toggleTheme()}>
-          <Simple duration={750} />
+          <Simple />
         </button>
       </div>
     </div>

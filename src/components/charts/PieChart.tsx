@@ -12,7 +12,7 @@ import { Pie } from "react-chartjs-2";
 import style from "../../styles/PieChart.module.css";
 import { useTranslation } from "react-i18next";
 
-function PieChart({ tasks }) {
+function PieChart({ tasks }: any) {
   Chart.register(
     ArcElement,
     CategoryScale,
@@ -25,10 +25,10 @@ function PieChart({ tasks }) {
 
   const totalCount = tasks.length;
   const { t } = useTranslation();
-  const doneCount = tasks.filter((item) => item.status === "Done").length;
-  const newCount = tasks.filter((item) => item.status === "New").length;
+  const doneCount = tasks.filter((item: any) => item.status === "Done").length;
+  const newCount = tasks.filter((item: any) => item.status === "New").length;
   const inProgressCount = tasks.filter(
-    (item) => item.status === "In Progress"
+    (item: any) => item.status === "In Progress"
   ).length;
 
   const donePercentage = ((doneCount / totalCount) * 100).toFixed(2);
