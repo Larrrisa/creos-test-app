@@ -49,3 +49,13 @@ export interface Issue {
   date_started_by_designer: string;
   date_finished_by_designer: string;
 }
+
+export interface ThemeProviderProps {
+  children: ReactNode;
+}
+
+export interface ThemeContextType {
+  theme: string;
+  setTheme: React.Dispatch<React.SetStateAction<string>>;
+  toggleTheme: () => void;
+}

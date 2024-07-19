@@ -1,16 +1,7 @@
 import { createContext, useState, ReactNode } from "react";
-
-interface ThemeContextType {
-  theme: string;
-  setTheme: React.Dispatch<React.SetStateAction<string>>;
-  toggleTheme: () => void;
-}
+import { ThemeContextType, ThemeProviderProps } from "../types/types";
 
 const ThemeContext = createContext<ThemeContextType>(undefined as never);
-
-interface ThemeProviderProps {
-  children: ReactNode;
-}
 
 const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
   const [theme, setTheme] = useState<string>("");
