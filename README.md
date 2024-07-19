@@ -1,30 +1,52 @@
-# React + TypeScript + Vite
+# CRM
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Техническое требование:
+- **Сборщик проекта**: Vite (React + TypeScript)
+- **Redux Toolkit**
+- **Axios**
+- **UI**: своё решение
+- **Визуализация данных на графиках**: Chart.js
+- **Адаптивный дизайн**: от 360px
 
-Currently, two official plugins are available:
+## Функционал:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Шапка
+- Переключение локалей (RU, EN) для интерфейса
+- Переключение тем (светлая, темная)
+- Выводится текущий номер рабочей недели
 
-## Expanding the ESLint configuration
+### Главная страница
+- Отображаются последние 10 комментариев. Выводятся:
+  - Аватар дизайнера
+  - Имя пользователя
+  - Относительное время (минут, часов, дней назад)
+  - Задача
+  - Сообщение
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- Отображается топ 10 дизайнеров. Отсортированы по меньшему времени и максимальному количеству закрытых задач. Выводятся:
+  - Медиана затраченного времени на выполнение задачи
+  - Количество выполненных задач
+  - Аватар дизайнера
+  - Имя пользователя
 
-- Configure the top-level `parserOptions` property like this:
+### Страница задач
+- График закрытых за месяц задач с распределением по номерам рабочей недели. График состоит из:
+  - Прибыль
+  - Расходы
+  - Разница между прибылью и расходом
+  По умолчанию выводится 8 последних рабочих недель.
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+- Круговая диаграмма с процентным соотношением статусов всех задач (проценты показываются при наведении на диаграмму).
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+### Страница дизайнера
+- Отображаются все дизайнеры по 16 штук на странице. Выводится:
+  - Аватар дизайнера
+  - Имя дизайнера
+  - Почта
+  - Количество задач закрытых и в процессе
+  - Сортировка по имени дизайнера
+
+   
+
+
+
