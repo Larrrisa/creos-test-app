@@ -1,0 +1,48 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 3rem;
+  max-width: 100vw;
+  color: #333;
+}
+
+.header_links {
+  display: flex;
+  gap: 2rem;
+}
+
+.header_controls {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.language-switcher {
+  cursor: pointer;
+  font-size: 18px;
+  color: #333;
+}
+
+.dark-theme .header {
+  background-color: #333;
+  color: #fff;
+}
+
+.dark-theme .theme-switcher,
+.dark-theme .language-switcher {
+  color: #fff;
+}
+
+@media (max-width: 600px) {
+  .header {
+    padding: 1rem;
+  }
+  .header_links {
+    margin-right: 0.8rem;
+    gap: 0.5rem;
+  }
+  .header_controls {
+    gap: 0.5rem;
+  }
+}

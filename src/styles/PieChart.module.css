@@ -1,0 +1,11 @@
+.pie_chart {
+  width: 35rem !important;
+  height: 35rem !important;
+}
+
+@media (max-width: 800px) {
+  .pie_chart {
+    width: 85vw !important;
+    height: 85vw !important;
+  }
+}
